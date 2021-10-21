@@ -4,7 +4,7 @@ TYPE=""
 STRUCT=""
 PRINTER="array"
 VERSION=""
-PROGRAM="a"
+PROGRAM="a.out"
 
 if [[ $BASH_ARGC -ge 2 && $BASH_ARGC -le 5 ]]; then
   if [[ $BASH_ARGC -ge 1 ]]; then
@@ -21,7 +21,7 @@ if [[ $BASH_ARGC -ge 2 && $BASH_ARGC -le 5 ]]; then
   if [[ $BASH_ARGC -ge 4 && "$4" != '-' ]]; then
     VERSION="_$4"
     if [[ "$2" == '-' ]]; then
-      PROGRAM="$4"
+      PROGRAM="$4.out"
     fi
   fi
 else
