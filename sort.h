@@ -1,5 +1,15 @@
 #ifndef SORT_H
 #define SORT_H
+#include <stdio.h>
+#include <stdlib.h>
+
+#ifndef SWAP
+#define SWAP(array, a, b) {\
+	tmp = array[a]; \
+	array[a] = array[b]; \
+	array[b] = tmp; \
+}
+#endif
 
 /**
  * struct listint_s - Represents a doubly linked list node.
