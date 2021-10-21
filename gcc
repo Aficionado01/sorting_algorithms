@@ -12,7 +12,7 @@ if [[ $BASH_ARGC -ge 2 && $BASH_ARGC -le 5 ]]; then
   fi
   if [[ $BASH_ARGC -ge 2 && "$2" != "-" ]]; then
     TYPE="$2_"
-    PROGRAM="$2"
+    PROGRAM="$2.out"
   fi
   if [[ $BASH_ARGC -ge 3 && "$3" != "-" ]]; then
     STRUCT="_$3"
