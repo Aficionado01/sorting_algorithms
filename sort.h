@@ -3,6 +3,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#ifndef TRUE
+#define TRUE 1
+#endif
+#ifndef FALSE
+#define FALSE 0
+#endif
 #ifndef SWAP
 #define SWAP(array, a, b) {\
 	tmp = array[a]; \
@@ -36,6 +42,8 @@ void quick_sort(int *array, size_t size);
 void shell_sort(int *array, size_t size);
 void cocktail_sort_list(listint_t **list);
 void counting_sort(int *array, size_t size);
+void top_down_merge(int *array, int *array_c, size_t l, size_t m, size_t r);
+void split_merge(int *array, int *array_c, size_t l, size_t r);
 void merge_sort(int *array, size_t size);
 void heap_sort(int *array, size_t size);
 void radix_sort(int *array, size_t size);
