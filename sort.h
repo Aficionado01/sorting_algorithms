@@ -9,6 +9,9 @@
 #ifndef FALSE
 #define FALSE 0
 #endif
+#ifndef UNDEF
+#define UNDEF -1
+#endif
 #ifndef SWAP
 #define SWAP(array, a, b) {\
 	tmp = array[a]; \
@@ -48,6 +51,8 @@ void counting_sort(int *array, size_t size);
 void top_down_merge(int *array, int *array_c, size_t l, size_t m, size_t r);
 void split_merge(int *array, int *array_c, size_t l, size_t r);
 void merge_sort(int *array, size_t size);
+void sift_down(int *array, int arr_size, int size, int pos);
+void build_max_heap(int *array, int size);
 void heap_sort(int *array, size_t size);
 void radix_sort(int *array, size_t size);
 void bitonic_merge(int *array, size_t size,
