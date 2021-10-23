@@ -1,13 +1,9 @@
 #include "sort.h"
 
 /**
-<<<<<<< HEAD
- * insertion_sort_list - sorts a doubly linked list of integers in ascending
- *  order using the insertion sort algorithm
- * @list: the list as argument
- * 
- * Description: prints the list after each swapping time
- * Return: void
+ * insertion_sort_list - Sorts a doubly linked list of integers \
+ * in ascending order using the insertion sort algorithm.
+ * @list: The doubly linked list to be sorted.
  */
 void insertion_sort_list(listint_t **list)
 {
@@ -15,13 +11,10 @@ void insertion_sort_list(listint_t **list)
 
 	if (list == NULL || *list == NULL)
 		return;
-
 	temp = (*list)->next;
-
 	for (; temp; temp = next)
 	{
 		next = temp->next;
-
 		while (temp->prev && temp->prev->n > temp->n)
 		{
 			temp->prev->next = temp->next;
@@ -36,9 +29,11 @@ void insertion_sort_list(listint_t **list)
 				temp->prev->next = temp;
 			print_list(*list);
 		}
-
 		temp = next;
-=======
+	}
+}
+
+/**
  * swap_nodes - Swaps two nodes in a linked list.
  * @list: A pointer to the head of the linked list.
  * @l: The left item to swap.
@@ -86,11 +81,11 @@ void swap_nodes(listint_t **list, listint_t *l, listint_t *r)
 }
 
 /**
- * insertion_sort_list - Sorts a doubly linked list using
+ * insertion_sort_list2 - Sorts a doubly linked list using
  * the insertion sort algorithm.
- * @list: The list to sort.
+ * @list: A pointer to the list to be sorted.
  */
-void insertion_sort_list(listint_t **list)
+void insertion_sort_list2(listint_t **list)
 {
 	listint_t *node0 = NULL, *node1 = NULL, *node2 = NULL, *tmp = NULL;
 
@@ -114,6 +109,5 @@ void insertion_sort_list(listint_t **list)
 				node2 = tmp->prev;
 			}
 		}
->>>>>>> d171eca5ccdb2c1f94cf197fd10187ae0be1b7f0
 	}
 }
