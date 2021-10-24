@@ -48,6 +48,7 @@ void selection_sort(int *array, size_t size);
 void quick_sort_range_lomuto(int *array, size_t low, size_t high, size_t size);
 void quick_sort(int *array, size_t size);
 void shell_sort(int *array, size_t size);
+listint_t *get_tail(listint_t **list);
 void cocktail_sort_list(listint_t **list);
 void counting_sort(int *array, size_t size);
 void top_down_merge(int *array, int *array_c, size_t l, size_t m, size_t r);
