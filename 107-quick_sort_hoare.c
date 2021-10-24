@@ -8,14 +8,14 @@
  */
 void swap_items(int *array, size_t l, size_t r)
 {
-  int tmp;
+	int tmp;
 
-  if (array != NULL)
-  {
-    tmp = array[l];
-    array[l] = array[r];
-    array[r] = tmp;
-  }
+	if (array != NULL)
+	{
+		tmp = array[l];
+		array[l] = array[r];
+		array[r] = tmp;
+	}
 }
 
 /**
@@ -28,30 +28,30 @@ void swap_items(int *array, size_t l, size_t r)
  */
 void quick_sort_range_hoare(int *array, size_t low, size_t high, size_t size)
 {
-  size_t a, b;
-  int pivot;
+	size_t a, b;
+	int pivot;
 
-  if ((low >= high) || (array == NULL))
-    return;
-  pivot = array[high];
-  /* Hoare's partition */
-  a = low;
-  b = high;
-  while (TRUE)
-  {
-    while (array[a] < pivot)
-      a++;
-    while (array[b] > pivot)
-      b--;
-    if (a >= b)
-      break;
-    swap_items(array, a, b);
-    print_array(array, size);
-  }
-  if (b - low > 1)
-    quick_sort_range_hoare(array, low, b - 1, size);
-  if (high - b > 1)
-    quick_sort_range_hoare(array, b + 1, high, size);
+	if ((low >= high) || (array == NULL))
+		return;
+	pivot = array[high];
+	/* Hoare's partition */
+	a = low;
+	b = high;
+	while (TRUE)
+	{
+		while (array[a] < pivot)
+			a++;
+		while (array[b] > pivot)
+			b--;
+		if (a >= b)
+			break;
+		swap_items(array, a, b);
+		print_array(array, size);
+	}
+	if (b - low > 1)
+		quick_sort_range_hoare(array, low, b - 1, size);
+	if (high - b > 1)
+		quick_sort_range_hoare(array, b + 1, high, size);
 }
 
 /**
@@ -62,8 +62,8 @@ void quick_sort_range_hoare(int *array, size_t low, size_t high, size_t size)
  */
 void quick_sort_hoare(int *array, size_t size)
 {
-  if (array != NULL)
-  {
-    quick_sort_range_hoare(array, 0, size - 1, size);
-  }
+	if (array != NULL)
+	{
+		quick_sort_range_hoare(array, 0, size - 1, size);
+	}
 }

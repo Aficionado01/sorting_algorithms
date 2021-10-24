@@ -8,14 +8,14 @@
  */
 void swap_items(int *array, size_t l, size_t r)
 {
-  int tmp;
+	int tmp;
 
-  if (array != NULL)
-  {
-    tmp = array[l];
-    array[l] = array[r];
-    array[r] = tmp;
-  }
+	if (array != NULL)
+	{
+		tmp = array[l];
+		array[l] = array[r];
+		array[r] = tmp;
+	}
 }
 
 /**
@@ -25,22 +25,22 @@ void swap_items(int *array, size_t l, size_t r)
  */
 void selection_sort(int *array, size_t size)
 {
-  size_t i, j, low_idx;
+	size_t i, j, low_idx;
 
-  for (i = 0; i < size - 1; i++)
-  {
-    low_idx = i;
-    for (j = size - 1; j > i; j--)
-    {
-      if (array[j] < array[low_idx])
-      {
-        low_idx = j;
-      }
-    }
-    if (i != low_idx)
-    {
-      swap_items(array, i, low_idx);
-      print_array(array, size);
-    }
-  }
+	for (i = 0; i < size - 1; i++)
+	{
+		low_idx = i;
+		for (j = size - 1; j > i; j--)
+		{
+			if (array[j] < array[low_idx])
+			{
+				low_idx = j;
+			}
+		}
+		if (i != low_idx)
+		{
+			swap_items(array, i, low_idx);
+			print_array(array, size);
+		}
+	}
 }

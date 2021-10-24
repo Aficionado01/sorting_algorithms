@@ -8,14 +8,14 @@
  */
 void swap_items(int *array, size_t l, size_t r)
 {
-  int tmp;
+	int tmp;
 
-  if (array != NULL)
-  {
-    tmp = array[l];
-    array[l] = array[r];
-    array[r] = tmp;
-  }
+	if (array != NULL)
+	{
+		tmp = array[l];
+		array[l] = array[r];
+		array[r] = tmp;
+	}
 }
 
 /**
@@ -28,20 +28,20 @@ void swap_items(int *array, size_t l, size_t r)
  */
 void sift_down(int *array, int arr_size, int size, int pos)
 {
-  int j, child;
+	int j, child;
 
-  j = pos;
-  while (j < (size / 2))
-  {
-    child = (2 * j) + 1;
-    if ((child < (size - 1)) && (array[child] < array[child + 1]))
-      child++;
-    if (array[j] >= array[child])
-      return;
-    swap_items(array, j, child);
-    print_array(array, arr_size);
-    j = child;
-  }
+	j = pos;
+	while (j < (size / 2))
+	{
+		child = (2 * j) + 1;
+		if ((child < (size - 1)) && (array[child] < array[child + 1]))
+			child++;
+		if (array[j] >= array[child])
+			return;
+		swap_items(array, j, child);
+		print_array(array, arr_size);
+		j = child;
+	}
 }
 
 /**
@@ -51,12 +51,12 @@ void sift_down(int *array, int arr_size, int size, int pos)
  */
 void build_max_heap(int *array, int size)
 {
-  int a;
+	int a;
 
-  for (a = (size / 2) - 1; a >= 0; a--)
-  {
-    sift_down(array, size, size, a);
-  }
+	for (a = (size / 2) - 1; a >= 0; a--)
+	{
+		sift_down(array, size, size, a);
+	}
 }
 
 /**
@@ -66,17 +66,17 @@ void build_max_heap(int *array, int size)
  */
 void heap_sort(int *array, size_t size)
 {
-  int i, n;
+	int i, n;
 
-  build_max_heap(array, size);
-  n = size;
-  for (i = 0; i < (int)size; i++)
-  {
-    swap_items(array, --n, 0);
-    if (n != 0)
-    {
-      print_array(array, size);
-      sift_down(array, size, n, 0);
-    }
-  }
+	build_max_heap(array, size);
+	n = size;
+	for (i = 0; i < (int)size; i++)
+	{
+		swap_items(array, --n, 0);
+		if (n != 0)
+		{
+			print_array(array, size);
+			sift_down(array, size, n, 0);
+		}
+	}
 }

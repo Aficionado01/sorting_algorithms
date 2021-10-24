@@ -8,14 +8,14 @@
  */
 void swap_items(int *array, size_t l, size_t r)
 {
-  int tmp;
+	int tmp;
 
-  if (array != NULL)
-  {
-    tmp = array[l];
-    array[l] = array[r];
-    array[r] = tmp;
-  }
+	if (array != NULL)
+	{
+		tmp = array[l];
+		array[l] = array[r];
+		array[r] = tmp;
+	}
 }
 
 /**
@@ -27,7 +27,7 @@ void swap_items(int *array, size_t l, size_t r)
  * @ascending: A flag specifying the direction of the items in this sub-array.
  */
 void bitonic_merge(int *array, size_t size,
-	size_t low, size_t n, char ascending)
+									 size_t low, size_t n, char ascending)
 {
 	size_t i, m;
 
@@ -55,19 +55,21 @@ void bitonic_merge(int *array, size_t size,
  * @ascending: A flag specifying the direction of the items in this sub-array.
  */
 void bitonic_sort_split(int *array, size_t size,
-	size_t low, size_t n, char ascending)
+												size_t low, size_t n, char ascending)
 {
 	size_t m;
 
 	if ((array != NULL) && (n > 1))
 	{
 		m = n / 2;
-		printf("Merging [%d/%d] (%s):\n", (int)(n), (int)size, ascending ? "UP" : "DOWN");
+		printf("Merging [%d/%d] (%s):\n",
+					(int)(n), (int)size, ascending ? "UP" : "DOWN");
 		print_array(array + low, n);
 		bitonic_sort_split(array, size, low, m, TRUE);
 		bitonic_sort_split(array, size, low + m, m, FALSE);
 		bitonic_merge(array, size, low, n, ascending);
-		printf("Result [%d/%d] (%s):\n", (int)(n), (int)size, ascending ? "UP" : "DOWN");
+		printf("Result [%d/%d] (%s):\n",
+					(int)(n), (int)size, ascending ? "UP" : "DOWN");
 		print_array(array + low, n);
 	}
 }
