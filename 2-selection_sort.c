@@ -27,20 +27,23 @@ void selection_sort(int *array, size_t size)
 {
 	size_t i, j, low_idx;
 
-	for (i = 0; i < size - 1; i++)
+	if (array != NULL)
 	{
-		low_idx = i;
-		for (j = size - 1; j > i; j--)
+		for (i = 0; i < size - 1; i++)
 		{
-			if (array[j] < array[low_idx])
+			low_idx = i;
+			for (j = size - 1; j > i; j--)
 			{
-				low_idx = j;
+				if (array[j] < array[low_idx])
+				{
+					low_idx = j;
+				}
 			}
-		}
-		if (i != low_idx)
-		{
-			swap_items(array, i, low_idx);
-			print_array(array, size);
+			if (i != low_idx)
+			{
+				swap_items(array, i, low_idx);
+				print_array(array, size);
+			}
 		}
 	}
 }
