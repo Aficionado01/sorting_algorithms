@@ -41,15 +41,17 @@ void quick_sort_range_hoare(int *array, size_t low, size_t high, size_t size)
 	{
 		while (array[i] < pivot)
 			i++;
-		while (array[j] > pivot)
+		while ((array[j] > pivot) && (j > 0))
 			j--;
 		if (i >= j)
 			break;
 		swap_items(array, i, j);
 		print_array(array, size);
 	}
-	quick_sort_range_hoare(array, low, j > 0 ? j - 1 : 0, size);
-	quick_sort_range_hoare(array, j + 1, j == high ? high - 1 : high, size);
+	if (j - low > 0)
+		quick_sort_range_hoare(array, low, j > 0 ? j - 1 : 0, size);
+	if (high - j > 1)
+		quick_sort_range_hoare(array, j + 1, j == high ? high - 1 : high, size);
 }
 
 /**
