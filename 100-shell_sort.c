@@ -28,9 +28,9 @@ void shell_sort(int *array, size_t size)
 	int j, tmp;
 	size_t i, gap = 0;
 
-	if (array == NULL)
+	if ((array == NULL) || (size < 2))
 		return;
-	gap = (size / 3) + 1;
+	gap = (size / 3);
 	for (; gap > 0; gap = (gap - 1) / 3)
 	{
 		for (i = gap; i < size; i++)
