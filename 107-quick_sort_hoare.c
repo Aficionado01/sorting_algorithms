@@ -52,8 +52,10 @@ void quick_sort_range_hoare(int *array, size_t low, size_t high, size_t size)
 			print_array(array, size);
 		}
 	}
-	quick_sort_range_hoare(array, low, j - (j == high), size);
-	quick_sort_range_hoare(array, j - (j == high) + 1, high, size);
+	if (j - low > 1)
+		quick_sort_range_hoare(array, low, j - (j == high), size);
+	if (high - j > 1)
+		quick_sort_range_hoare(array, j - (j == high) + 1, high, size);
 }
 
 /**
