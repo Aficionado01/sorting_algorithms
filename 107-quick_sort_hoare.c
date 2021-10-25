@@ -28,30 +28,32 @@ void swap_items(int *array, size_t l, size_t r)
  */
 void quick_sort_range_hoare(int *array, size_t low, size_t high, size_t size)
 {
-	size_t i, j, p;
+	size_t i, j;
 	int pivot;
 
 	if ((low >= high) || (array == NULL))
 		return;
-	p = high;
-	pivot = array[p];
-	i = low;
-	j = high;
-	while (i < j)
+	pivot = array[high];
+	i = low - 1;
+	j = high + 1;
+	while (TRUE)
 	{
-		while (array[i] < pivot)
+		do {
 			i++;
-		while ((array[j] > pivot) && (j > 0))
+		} while (array[i] < pivot);
+		do {
 			j--;
-		p = j - (j == high);
+		} while ((array[j] > pivot));
+		if ((i >= j))
+			break;
 		if (array[i] != array[j])
 		{
 			swap_items(array, i, j);
 			print_array(array, size);
 		}
 	}
-	quick_sort_range_hoare(array, low, p, size);
-	quick_sort_range_hoare(array, p + 1, high, size);
+	quick_sort_range_hoare(array, low, j - (j == high), size);
+	quick_sort_range_hoare(array, j + (j == high) + 1, high, size);
 }
 
 /**
