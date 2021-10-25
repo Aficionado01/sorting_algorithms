@@ -10,7 +10,7 @@ void radix_sort(int *array, size_t size)
 	int digits = 0, i, j, max_val = 0, base = 10, pow_b;
 	int *bins = NULL, *counts = NULL, sorted = FALSE;
 
-	if (array == NULL)
+	if ((array == NULL) || (size < 2))
 		return;
 	for (i = 0; i < (int)size; i++)
 		max_val = array[i] > max_val ? array[i] : max_val;
