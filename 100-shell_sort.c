@@ -25,15 +25,12 @@ void swap_items(int *array, size_t l, size_t r)
  */
 void shell_sort(int *array, size_t size)
 {
-	int max_val, j;
+	int j;
 	size_t i, gap = 0;
 
 	if (array == NULL)
 		return;
-	for (i = 0, max_val = array[0]; i < size; i++)
-		max_val = array[i] > max_val ? array[i] : max_val;
-	while (max_val)
-		gap = (gap * 3 + 1), max_val /= 10;
+	gap = (size / 3) + 1;
 	for (; gap > 0; gap = (gap - 1) / 3)
 	{
 		for (i = gap; i < size; i++)
