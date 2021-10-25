@@ -30,13 +30,13 @@ void shell_sort(int *array, size_t size)
 
 	if ((array == NULL) || (size < 2))
 		return;
-	gap = (size / 3);
+	gap = (size / 3) + 1;
 	for (; gap > 0; gap = (gap - 1) / 3)
 	{
 		for (i = gap; i < size; i++)
 		{
 			tmp = array[i];
-			for (j = (int)(i); (j >= gap) && (array[j - gap] > tmp); j -= gap)
+			for (j = (int)(i); (j >= (int)gap) && (array[j - gap] > tmp); j -= gap)
 			{
 				array[j] = array[j - gap];
 			}
