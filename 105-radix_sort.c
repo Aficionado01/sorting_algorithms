@@ -8,23 +8,17 @@
 void radix_sort(int *array, size_t size)
 {
 	int digits = 0, i, j, max_val = 0, base = 10, pow_b;
-	int *bins = NULL, *counts = NULL;
+	int *bins = NULL, *counts = NULL, sorted = FALSE;
 
 	if (array == NULL)
 		return;
 	for (i = 0; i < (int)size; i++)
 		max_val = array[i] > max_val ? array[i] : max_val;
-	while (max_val)
+	while (max_val > 0)
 		digits++, max_val /= 10;
 	bins = malloc(sizeof(int) * size);
-	if (bins == NULL)
-		return;
 	counts = malloc(sizeof(int) * base);
-	if (counts == NULL)
-	{
-		free(bins);
-		return;
-	}
+	digits = ((bins == NULL) || (counts == NULL) ? 0 : digits);
 	for (i = 0, pow_b = 1; i < digits; i++, pow_b *= base)
 	{
 		for (j = 0; j < base; j++)
@@ -37,8 +31,12 @@ void radix_sort(int *array, size_t size)
 			bins[--counts[(array[j] / pow_b) % base]] = array[j];
 		for (j = 0; j < (int)size; j++)
 			array[j] = bins[j];
-		print_array(array, size);
+		print_array(array, size), sorted = TRUE;
 	}
-	free(bins);
-	free(counts);
+	if ((!max_val && !sorted) && (size > 0))
+		print_array(array, size);
+	if (bins != NULL)
+		free(bins);
+	if (counts != NULL)
+		free(counts);
 }
