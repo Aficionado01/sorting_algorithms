@@ -43,8 +43,8 @@ void quick_sort_range_hoare(int *array, size_t low, size_t high, size_t size)
 		} while (array[i] < pivot);
 		do {
 			j--;
-		} while ((array[j] > pivot));
-		if ((i >= j))
+		} while (array[j] > pivot);
+		if (i >= j)
 			break;
 		if (array[i] != array[j])
 		{
