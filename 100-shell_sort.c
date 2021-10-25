@@ -1,30 +1,48 @@
 #include "sort.h"
 
 /**
+ * swap_items - Swaps two items in an array.
+ * @array: The array to modify.
+ * @l: The index of the left item.
+ * @r: The index of the right item.
+ */
+void swap_items(int *array, size_t l, size_t r)
+{
+	int tmp;
+
+	if (array != NULL)
+	{
+		tmp = array[l];
+		array[l] = array[r];
+		array[r] = tmp;
+	}
+}
+
+/**
  * shell_sort - Sorts an array using the shell sort algorithm.
  * @array: The array to sort.
  * @size: The length of the array.
  */
 void shell_sort(int *array, size_t size)
 {
-	int tmp, i, gaps[2];
-	const int gapSize = 2;
-	size_t j, k, gap;
+	int max_val, j;
+	size_t i, gap = 4;
 
-	gaps[0] = 1;
-	for (i = 1; i < gapSize; i++)
-		gaps[i] = gaps[i - 1] * 3 + 1; /* Knuth sequence */
-	for (i = gapSize - 1; i >= 0; i--)
+	if (array == NULL)
+		return;
+	for (i = 0, max_val = array[0]; i < size; i++)
+		max_val = array[i] > max_val ? array[i] : max_val;
+	for (; gap > 0; gap = (gap - 1) / 3)
 	{
-		gap = gaps[i];
-		for (j = gap; j < size; j++)
+		for (i = gap; i < size; i++)
 		{
-			tmp = array[j];
-			for (k = j; (k >= gap) && ((array[k - gap]) > tmp); k -= gap)
+			for (j = (int)(i - gap); j >= 0; j -= gap)
 			{
-				array[k] = array[k - gap];
+				if (array[j] > array[j + gap])
+				{
+					swap_items(array, j, j + gap);
+				}
 			}
-			array[k] = tmp;
 		}
 		print_array(array, size);
 	}
