@@ -16,7 +16,7 @@ void radix_sort(int *array, size_t size)
 		max_val = array[i] > max_val ? array[i] : max_val;
 	while (max_val)
 		digits++, max_val /= 10;
-	bins = malloc(sizeof(int) * base);
+	bins = malloc(sizeof(int) * size);
 	if (bins == NULL)
 		return;
 	counts = malloc(sizeof(int) * base);
