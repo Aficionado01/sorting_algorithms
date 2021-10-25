@@ -46,8 +46,11 @@ void quick_sort_range_hoare(int *array, size_t low, size_t high, size_t size)
 		p = j - (j == high);
 		if (i >= j)
 			break;
-		swap_items(array, i, j);
-		print_array(array, size);
+		if (array[i] != array[j])
+		{
+			swap_items(array, i, j);
+			print_array(array, size);
+		}
 	}
 	quick_sort_range_hoare(array, low, p, size);
 	quick_sort_range_hoare(array, p + 1, high, size);
