@@ -29,7 +29,7 @@ void shell_sort(int *array, size_t size)
 
 	if ((array == NULL) || (size < 2))
 		return;
-	gap = 4;
+	gap = (size / 3) + 1;
 	for (; gap > 0; )
 	{
 		for (i = gap; i < (int)size; i++)
