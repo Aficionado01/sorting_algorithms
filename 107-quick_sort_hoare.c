@@ -44,12 +44,14 @@ void quick_sort_range_hoare(int *array, size_t low, size_t high, size_t size)
 		do {
 			j--;
 		} while (array[j] > pivot);
-		if (i >= j)
-			break;
-		if (array[i] != array[j])
+		if (i < j)
 		{
 			swap_items(array, i, j);
 			print_array(array, size);
+		}
+		else
+		{
+			break;
 		}
 	}
 	quick_sort_range_hoare(array, low, j - (j == high), size);
