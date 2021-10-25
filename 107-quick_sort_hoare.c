@@ -28,24 +28,22 @@ void swap_items(int *array, size_t l, size_t r)
  */
 void quick_sort_range_hoare(int *array, size_t low, size_t high, size_t size)
 {
-	size_t i, j, p = high;
+	size_t i, j, p;
 	int pivot;
 
 	if ((low >= high) || (array == NULL))
 		return;
+	p = high;
 	pivot = array[p];
-	/* Hoare's partition */
 	i = low;
 	j = high;
-	while (TRUE)
+	while (i < j)
 	{
 		while (array[i] < pivot)
 			i++;
 		while ((array[j] > pivot) && (j > 0))
 			j--;
 		p = j - (j == high);
-		if (i >= j)
-			break;
 		if (array[i] != array[j])
 		{
 			swap_items(array, i, j);
