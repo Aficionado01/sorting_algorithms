@@ -62,7 +62,7 @@ void quick_sort_range_hoare(int *array, size_t low, size_t high, size_t size)
  */
 void quick_sort_hoare(int *array, size_t size)
 {
-	if (array != NULL)
+	if ((array != NULL) || (size < 2))
 	{
 		quick_sort_range_hoare(array, 0, size - 1, size);
 	}
