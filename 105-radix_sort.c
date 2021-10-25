@@ -19,7 +19,7 @@ void radix_sort(int *array, size_t size)
 	bins = malloc(sizeof(int) * size);
 	if (bins == NULL)
 		return;
-	counts = malloc(sizeof(int) * size);
+	counts = malloc(sizeof(int) * base);
 	if (counts == NULL)
 	{
 		free(bins);
@@ -27,7 +27,7 @@ void radix_sort(int *array, size_t size)
 	}
 	for (i = 0, pow_b = 1; i < digits; i++, pow_b *= base)
 	{
-		for (j = 0; j < (int)size; j++)
+		for (j = 0; j < base; j++)
 			counts[j] = 0;
 		for (j = 0; j < (int)size; j++)
 			counts[(array[j] / pow_b) % base]++;
