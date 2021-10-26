@@ -38,19 +38,20 @@ void top_down_merge(int *array, int *array_c, size_t l, size_t m, size_t r)
  * merge sort algorithm.
  * @array: The array that has been split.
  * @array_c: The temporary array.
+ * @size: The length of the original array.
  * @l: The left index of the split-array.
  * @r: The right index of the split-array.
  */
-void split_merge(int *array, int *array_c, size_t l, size_t r)
+void split_merge(int *array, int *array_c, size_t size, size_t l, size_t r)
 {
 	size_t i, mid;
 
 	if ((r - l) <= 1)
 		return;
 	mid = (l + r) / 2;
-	split_merge(array, array_c, l, mid);
-	split_merge(array, array_c, mid, r);
-	for (i = l; i <= r; i++)
+	split_merge(array, array_c, size, l, mid);
+	split_merge(array, array_c, size, mid, r);
+	for (i = l; i <= r + (r == size ? -1 : 0); i++)
 		array_c[i] = array[i];
 	top_down_merge(array, array_c, l, mid, r);
 }
@@ -72,7 +73,7 @@ void merge_sort(int *array, size_t size)
 		{
 			for (i = 0; i < size; i++)
 				array_c[i] = array[i];
-			split_merge(array, array_c, 0, size);
+			split_merge(array, array_c, size, 0, size);
 			free(array_c);
 		}
 	}
